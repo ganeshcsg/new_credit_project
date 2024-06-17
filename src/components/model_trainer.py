@@ -9,7 +9,7 @@ from sklearn.ensemble import (
     RandomForestClassifier,
 )
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import recall_score
+from sklearn.metrics import recall_score,roc_auc_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from xgboost import XGBClassifier
@@ -108,8 +108,9 @@ class ModelTrainer:
 
             predicted=best_model.predict(X_test)
 
-            recall = recall_score(y_test, predicted)
-            return recall
+            # recall = recall_score(y_test, predicted)
+            auc_roc_score= roc_auc_score(y_test, predicted)
+            return print("ROC AUC score is: ",auc_roc_score)
             
 
 
